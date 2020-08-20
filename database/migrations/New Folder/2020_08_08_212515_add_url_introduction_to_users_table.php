@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddIntroductionToUsersTable extends Migration
+class AddUrlIntroductionToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,8 @@ class AddIntroductionToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('introduction');
-            //
+            $table->string('url')->default('');
+            $table->string('introduction')->default('');
         });
     }
 
@@ -27,7 +27,8 @@ class AddIntroductionToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-             $table->dropColumn('introduction');
+             $table->dropColumn('url');
+              $table->dropColumn('introduction');
         });
     }
 }
