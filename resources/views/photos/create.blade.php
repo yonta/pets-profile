@@ -4,8 +4,8 @@
     <div class="text-center">
         <h1>ペット写真追加</h1>
     </div>
-
-            {!! Form::model($photo, ['route' => 'photos.store']) !!}
+{{$id}}
+            {!! Form::model($photos, ['route' => ['photos.store', 'id' => $id]]) !!}
     
             <div class="form-group">
                     {!! Form::label('URL', '写真URL') !!}
@@ -13,9 +13,10 @@
                         </div>
             <div class="form-group">
                     {!! Form::label('introduction1', '説明') !!}
-                    {!! Form::text('introduction1', null, ['class' => 'form-control']) !!}
+           {!! Form::text('introduction1', null, ['class' => 'form-control']) !!}
             </div>
 
+ 
                 {!! Form::submit('更新', ['class' => 'btn btn-primary btn-block']) !!}
             {!! Form::close() !!}
 @endsection

@@ -73,9 +73,12 @@
             </div>
             @endforeach
             @if($count < 4)
-            {{$pet->id}}
-                      {{-- 追加ページへのリンク --}}
-                      {!! link_to_route('photos.create', '写真追加', ['class' => 'btn btn-light']) !!}
+                {{$pet->id}}
+                
+                {{ $photo->pet->id }}
+                  {{-- 追加ページへのリンク --}}  
+                 
+                  {!! link_to_route('photos.create', '写真追加', ['id' => $pet -> id], ['class' => 'btn btn-light']) !!}
             @endif
 
         </div>

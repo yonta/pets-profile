@@ -7,6 +7,7 @@
 
     <div class="row">
         <div class="col-sm-6 offset-sm-3">
+{{$user->id}}
 
             {!! Form::model($pets, ['route' => 'pets.store']) !!}
                 <div class="form-group">

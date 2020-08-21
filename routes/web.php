@@ -36,15 +36,22 @@ Route::group(['middleware' => ['auth']], function () {
  
     Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
     Route::resource('users', 'UsersController');//←これあってるかわからん
-     Route::resource('pets', 'PetsController', ['only' => ['store', 'destroy']]); //ペット登録と削除
-  Route::resource('pets', 'PetsController');
-  
-      Route::resource('photos', 'PhotosController');
+    Route::resource('pets', 'PetsController', ['only' => ['store', 'destroy']]); //ペット登録と削除
+    Route::resource('pets', 'PetsController');
+    
+     //   Route::resource('photos', 'PhotosController', ['only' => ['store', 'destroy']]); //ペット登録と削除
+         //  Route::resource('photos', 'PhotosController');
+        
+    Route::get('photos/create/{id}', 'PhotosController@create') -> name('photos.create');
+     Route::post('photos/store/{id}', 'PhotosController@store') -> name('photos.store');
+     
+  // Route::post('photos', 'PhotosController@store')->name('photos.store');
+  //Route::prefix('pets/{id}')->group(function () {
+  //  Route::group(['prefix' => 'pets/{id}'], function () {
+   //          Route::post('photos', 'PhotosController@store')->name('photos.store');
  
-    
-    //Route::group(['prefix' => 'pets/{id}'], function () {
-   //      Route::resource('photos', 'PhotosController', ['only' => ['store', 'destroy']]); //ペット登録と削除
-   //       Route::post('photos', 'PhotosController@store');
-  //  });
-    
+      //  Route::resource('photos', 'PhotosController', ['only' => ['store', 'destroy']]); //ペット登録と削除
+
+ //   });
+//    
 });

@@ -51,7 +51,7 @@
             </div>
 @endforeach
             {{-- ペット登録ページへのリンク。登録ペット数が４寄り小さければ表示 --}}
-            @if($count< 4) 
+            @if($count< 10) 
             <div>
             </div>
             <div class="card col-sm-5 mx-2 my-2">

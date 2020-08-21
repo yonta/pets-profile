@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Photo;
 use App\Pet;
 
+
 class PhotosController extends Controller
 {
      public function index()
@@ -41,22 +42,25 @@ class PhotosController extends Controller
     
 
      //新規ペット登録
-    public function create()
+    public function create($id)
     {
         $photos = new Photo;
                 // idの値でペットを検索して取得
       
         
-        return view('pets.photo', [
-            'photo' => $photos,
-    
+        return view('photos.create', [
+            'photos' => $photos,
+          'id'=>$id,
         ]);
     }
 
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-    
-      $request->pet()->photos()->create([
+      //idの値でペットを検索して表示
+      $pet = Pet::findOrFail($id);
+        
+      $pet->photos()->create([
+    //  $request->pet()->photos()->create([
         'URL' => $request->URL,
         'introduction1' => $request->introduction1,
         'introduction2' => '',
