@@ -43,8 +43,9 @@ Route::group(['middleware' => ['auth']], function () {
          //  Route::resource('photos', 'PhotosController');
         
     Route::get('photos/create/{id}', 'PhotosController@create') -> name('photos.create');
-     Route::post('photos/store/{id}', 'PhotosController@store') -> name('photos.store');
-     
+    Route::post('photos/store/{id}', 'PhotosController@store') -> name('photos.store');
+    Route::resource('photos', 'PhotosController', ['only' => ['destroy','edit','update']]); 
+    
   // Route::post('photos', 'PhotosController@store')->name('photos.store');
   //Route::prefix('pets/{id}')->group(function () {
   //  Route::group(['prefix' => 'pets/{id}'], function () {

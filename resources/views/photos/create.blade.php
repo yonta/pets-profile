@@ -4,7 +4,6 @@
     <div class="text-center">
         <h1>ペット写真追加</h1>
     </div>
-{{$id}}
             {!! Form::model($photos, ['route' => ['photos.store', 'id' => $id]]) !!}
     
             <div class="form-group">

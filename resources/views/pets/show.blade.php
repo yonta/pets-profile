@@ -42,47 +42,37 @@
     {{-- ペットのサブ写真を表示 --}}
     <div>
         <div class = "row my-2 mx-2"> 
-            <div class = "card col-3">
-            <img class="rounded img-fluid my-1" src="https://pbs.twimg.com/media/EfRsVRfU0AIwSkJ?format=jpg&name=medium" alt="">
-            この辺にコメントなど
-            </div>
-            <div class = "card col-3">
-             <img class="rounded img-fluid my-1" src="https://pbs.twimg.com/media/EfJMS4PUEAIG6d6?format=jpg&name=medium" alt="">
-            この辺にコメントなど
-            </div>
-             <div class = "card col-3">
-           <img class="rounded img-fluid my-1" src="https://pbs.twimg.com/media/EczWiB0UMAAuIR3?format=jpg&name=medium" alt="">
-            この辺にコメントなど
-            </div>
-             <div class = "card col-3">
-            <img class="rounded img-fluid my-1" src="https://pbs.twimg.com/media/EZ-FT3rUwAANqLG?format=jpg&name=medium" alt="">
-            この辺にコメントなど
-            </div>
-            
-           {{-- 編集ページへのリンク --}}
-          {!! link_to_route('photos.create', '写真追加', ['id' => '3'],['class' => 'btn btn-light']) !!}
-               <td>{!! link_to_route('photos.edit', "編集", ['photo' => '1']) !!}</td>
                
 <?php $count = 0; ?>
             @foreach ($photos as $photo)
 <?php $count++; ?>
-            <div class = "card col-3">
-                        {{$photo -> introduction1}}
-                  <td>{!! link_to_route('photos.edit', "編集", ['photo' => $photo -> id]) !!}</td>
-            <img class="rounded img-fluid my-1" src= "{{$photo -> URL }}" alt="">
+            <div class = "card col-3" style =" position: relative;"> 
+                 <img class="rounded img-fluid my-1" src= "{{$photo -> URL }}" alt="">
+                 <div>{{$photo -> introduction1}}</div>
+                        <div class = "row" style = "bottom: 0;  position: absolute;">
+                        @if (Auth::id() == $pet->user_id)
+                        　  {{-- 投稿編集ボタンのフォーム --}}
+                            {!! link_to_route('photos.edit', "編集", ['photo' => $photo -> id], ['class' => 'btn btn-primary btn-sm']) !!}
+                      　　　
+                            {{-- 投稿削除ボタンのフォーム --}}
+                            {!! Form::open(['route' => ['photos.destroy', $photo -> id], 'method' => 'delete' , 'onsubmit' => 'return confirm("写真が削除されます。よろしいですか?");']) !!}
+                                {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
+                            {!! Form::close() !!}
+                        @endif
+                        </div>
+           
             </div>
             @endforeach
-            @if($count < 4)
-                {{$pet->id}}
-                
-                {{ $photo->pet->id }}
+            @while($count < 4)
+            <?php $count++; ?>
                   {{-- 追加ページへのリンク --}}  
-                 
-                  {!! link_to_route('photos.create', '写真追加', ['id' => $pet -> id], ['class' => 'btn btn-light']) !!}
-            @endif
+                  <div class = "card col-3">
+                    <img class="rounded img-fluid my-1" src= "https://3.bp.blogspot.com/-QW0M1GOm1Ig/UNQkKtfbO7I/AAAAAAAAI2s/xEUVkCRRx_Q/s1600/mark_nikukyu.png" alt="">
+                  {!! link_to_route('photos.create', '写真追加', ['id' => $pet -> id], ['class' => 'btn btn-secondary']) !!}
+       
 
         </div>
-       
+            @endwhile
     </div>
 </div>
 @endsection

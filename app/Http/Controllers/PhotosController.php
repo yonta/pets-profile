@@ -99,4 +99,21 @@ class PhotosController extends Controller
         // トップページへリダイレクトさせる
         return redirect('/');
     }
+    
+       public function destroy($id)
+    {
+        // idの値で投稿を検索して取得
+        $photo = Photo::findOrFail($id);
+        $pet = Pet::findOrFail($photo->pet_id);
+
+        // 認証済みユーザ（閲覧者）がその投稿の所有者である場合は、投稿を削除
+        if($pet!=null)
+        {
+            if (\Auth::id() === $pet->user_id ){
+            $photo->delete();
+        }
+    }
+        // 前のURLへリダイレクトさせる
+        return back();
+    }
 }

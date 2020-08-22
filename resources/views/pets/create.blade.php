@@ -7,7 +7,6 @@
 
     <div class="row">
         <div class="col-sm-6 offset-sm-3">
-{{$user->id}}
 
             {!! Form::model($pets, ['route' => 'pets.store']) !!}
                 <div class="form-group">
@@ -37,12 +36,13 @@
                 </div>
                 
                  <div class="form-group">
-                    {!! Form::label('photo', 'プロフィール画像') !!}
-                    {!! Form::text('photo', null, ['class' => 'form-control']) !!}
+                    {!! Form::label('URL', 'プロフィール画像') !!}
+                    {!! Form::text('URL', null, ['class' => 'form-control']) !!}
                 </div>
 
                 {!! Form::submit('更新', ['class' => 'btn btn-primary btn-block']) !!}
             {!! Form::close() !!}
         </div>
+        
     </div>
 @endsection

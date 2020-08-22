@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Pet; // 追加
-
+use App\Photo;
 
 class PetsController extends Controller
 {
@@ -50,10 +50,12 @@ class PetsController extends Controller
     public function create()
     {
         $pets = new Pet;
-
+        $photos = new Photo;
+        
         // メッセージ作成ビューを表示
         return view('pets.create', [
             'pets' => $pets,
+            'photos' => $photos,
         ]);
     }
 
@@ -95,6 +97,9 @@ class PetsController extends Controller
         {
             //いいね押された時
             $pet->cute_count = $pet->cute_count +1;
+              $pet->save();
+               // 前のURLへリダイレクトさせる
+                return back();
         }
         else
         {
@@ -103,12 +108,15 @@ class PetsController extends Controller
             $pet->birthday = $request->birthday;
             $pet->sex = $request->sex;
             $pet->introduction = $request->introduction;
-        }
-              
-        $pet->save();
+            
+              $pet->save();
+                    
 
         // トップページへリダイレクトさせる
         return redirect('/');
+        }
+              
+
     }
     
     //可愛いねボタンカウント用
@@ -125,4 +133,20 @@ class PetsController extends Controller
         return redirect('/');
         
     }
+    
+        public function destroy($id)
+    {
+        // idの値で投稿を検索して取得
+        $pet = Pet::findOrFail($id);
+        // 認証済みユーザ（閲覧者）がその投稿の所有者である場合は、投稿を削除
+        if($pet!=null)
+        {
+            if (\Auth::id() === $pet->user_id ){
+         //   $pet->delete();
+        }
+    }
+   // トップページへリダイレクトさせる
+        return redirect('/');
+    }
+    
 }

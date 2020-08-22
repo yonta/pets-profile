@@ -1,3 +1,14 @@
+          <?php
+           function ConfirmDelete()
+                  {
+                    return false;
+                  }
+           
+           ?>
+            
+            
+
+
 @extends('layouts.app')
 
 @section('content')
@@ -41,6 +52,19 @@
 
                 {!! Form::submit('更新', ['class' => 'btn btn-primary btn-block']) !!}
             {!! Form::close() !!}
+            
+             @if (Auth::id() == $pet->user_id)
+                {{-- 投稿削除ボタンのフォーム --}}
+              
+                {!! Form::open(['route' => ['pets.destroy', $pet -> id], 'method' => 'delete', 'onsubmit' => 'return confirm("このペットの情報が全て削除されます。よろしいですか?");']) !!}
+                    {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm', 'data-toggle' => 'modal', 'data-target' => '#exampleModalCenter']) !!}
+                {!! Form::close() !!}
+            
+ 
+
+
+
+            @endif
         </div>
     </div>
 @endsection

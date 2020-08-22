@@ -13,6 +13,6 @@ class Photo extends Model
      */
     public function pet()
     {
-        return $this->belongsTo(Pet::class,'pet_id','id');
+        return $this->belongsTo(Pet::class);
     }
 }
