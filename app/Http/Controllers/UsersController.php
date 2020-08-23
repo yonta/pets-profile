@@ -12,11 +12,15 @@ class UsersController extends Controller
       public function index()
     {
         // ユーザ一覧をidの降順で取得
-        $users = User::get();
-if($users->name != null)
-{
-        return redirect('/');
-}
+        //$users = User::get()
+        $users = User::orderBy('id', 'desc')->paginate(20);
+         //  logger($users);
+           
+         //  foreach($users as $user){
+         //   logger($user->name);
+         //  }
+           
+        
         // ユーザ一覧ビューでそれを表示
         return view('users.index', [
             'users' => $users,

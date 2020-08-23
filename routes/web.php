@@ -28,7 +28,8 @@ Route::resource('breeds', 'BreedsController', ['only' => ['store','create']]); /
 // ペット種類を取得
 Route::get('breeds/{id}', 'BreedsController@show');
 Route::get('users/show/{id}','UsersController@show') -> name('users.show');
-
+    Route::resource('users', 'UsersController', ['only' => ['index']]);
+    Route::resource('users', 'UsersController');//←これあってるかわからん
 // ユーザ登録
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
 Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
@@ -42,8 +43,7 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 
 Route::group(['middleware' => ['auth']], function () {
  
-    Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
-    Route::resource('users', 'UsersController');//←これあってるかわからん
+
     Route::resource('pets', 'PetsController', ['only' => ['store', 'destroy']]); //ペット登録と削除
     Route::resource('pets', 'PetsController');
     
