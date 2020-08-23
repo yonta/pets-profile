@@ -68,7 +68,7 @@ class PetsController extends Controller
         'birthday' => $request->birthday,
         'sex' => $request->sex,
         //とりあえず保留
-        'breed_id' => '1',
+        'breed_id' => 1,
         'introduction' => $request->introduction,
          'cute_count' => 0,
          'main_URL'=>$request->main_URL,
