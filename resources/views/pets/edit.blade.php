@@ -21,6 +21,8 @@
                     <option value="{{ $breed -> id }}">{{ $breed -> name }}</option>
                 @endforeach
                 </select>
+                          {{-- 小分類登録ページへのリンク --}}
+                   <td>{!! link_to_route('breeds.create', 'ない場合は登録', []) !!}</td>
                 
                  <div class="form-group">
                     {!! Form::label('sex', '性別') !!}

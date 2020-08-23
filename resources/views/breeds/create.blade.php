@@ -11,7 +11,8 @@
                     <option value="{{ $specie -> id }}">{{ $specie -> name }}</option>
                 @endforeach
                 </select>
-    
+              {{-- 中分類登録ページへのリンク --}}
+                   <td>{!! link_to_route('species.create', 'ない場合は登録', []) !!}</td>
        
                 <div class="form-group">
                     {!! Form::label('name', '小分類名') !!}

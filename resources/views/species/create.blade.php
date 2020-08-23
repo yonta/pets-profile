@@ -14,6 +14,8 @@
                     <option value="{{ $classification -> id }}">{{ $classification -> name }}</option>
                 @endforeach
                 </select>
+                    {{-- 大分類登録ページへのリンク --}}
+                   <td>{!! link_to_route('classifications.create', 'ない場合は登録', []) !!}</td>
     
        
                 <div class="form-group">

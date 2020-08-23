@@ -20,6 +20,8 @@
        </div>
        <div class="card-body">
           <p>20/08/22　テスト版</p>
+          <p>20/08/23　他人がユーザー情報を編集できないよう修正しました</p>
+          <p>20/08/23　分類登録ページへのリンクを調整しました</p>
        </div>
       </div>
     </div>
@@ -36,11 +38,4 @@
     </div>
  </div>
  
-  {{-- 大分類登録ページへのリンク --}}
-   <td>{!! link_to_route('classifications.create', '大分類登録ページ', []) !!}</td>
-  {{-- 中分類登録ページへのリンク --}}
-   <td>{!! link_to_route('species.create', '中分類登録ページ', []) !!}</td>
-  {{-- 小分類登録ページへのリンク --}}
-   <td>{!! link_to_route('breeds.create', '小分類登録ページ', []) !!}</td>
-    
 @endsection
