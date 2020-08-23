@@ -3,9 +3,10 @@
 @if (count($users) > 0)
     <ul class="list-unstyled">
         @foreach ($users as $user)
+        <div class = "card my-1">
             <li class="media">
                 {{-- ユーザのメールアドレスをもとにGravatarを取得して表示 --}}
-                <img class="mr-2 rounded" src="{{ Gravatar::get($user->email, ['size' => 50]) }}" alt="">
+                        <img class="col-sm-1 mr-2 rounded" src="{{ $user->url }}, ['size' => 50]" alt="">
                 <div class="media-body">
                     <div>
                         {{ $user->name }}
@@ -16,6 +17,7 @@
                     </div>
                 </div>
             </li>
+            </div>
              @endforeach
     </ul>
     {{-- ページネーションのリンク --}}
