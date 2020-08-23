@@ -12,7 +12,7 @@
                         </div>
             <div class="form-group">
                     {!! Form::label('introduction1', '説明') !!}
-           {!! Form::text('introduction1', null, ['class' => 'form-control']) !!}
+                    {!! Form::text('introduction1', null, ['class' => 'form-control']) !!}
             </div>
 
  

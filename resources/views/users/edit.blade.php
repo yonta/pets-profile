@@ -15,7 +15,7 @@
                       {!! Form::label('introduction', 'ひとこと') !!}
                     {!! Form::text('introduction', null, ['class' => 'form-control']) !!}
                     
-                      {!! Form::label('url', 'アイコン') !!}
+                      {!! Form::label('url', 'アイコン画像URL') !!}
                     {!! Form::text('url', null, ['class' => 'form-control']) !!}
          
                 </div>
