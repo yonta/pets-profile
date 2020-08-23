@@ -35,6 +35,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        //未ログインでもトップページに行きたい
+        //$this->middleware('guest')->except('logout');
     }
 }
