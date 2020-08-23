@@ -48,7 +48,7 @@
           
                {{-- 投稿内容 --}}
             <p class="mb-0">お誕生日：{!! nl2br(e($pet->birthday)) !!}</p>
-           <!-- <p class="mb-0">種類：{!! nl2br(e($pet->breed_id)) !!}</p>  -->
+           <p class="mb-0">種類：{!! nl2br(e($breed->name)) !!}</p> 
             <p class="mb-0">性別：{!! nl2br(e($pet->sex)) !!}</p>
             <p class="mb-0">アピールポイント：{!! nl2br(e($pet->introduction)) !!}</p>
             <p class="mb-0">♡：{!! nl2br(e($pet->cute_count)) !!}</p>

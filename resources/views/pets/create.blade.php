@@ -8,18 +8,21 @@
     <div class="row">
         <div class="col-sm-6 offset-sm-3">
 
-            {!! Form::model($pets, ['route' => 'pets.store']) !!}
+            {!! Form::model([$pets,$breeds], ['route' => 'pets.store']) !!}
                 <div class="form-group">
                     {!! Form::label('name', 'お名前') !!}
                     {!! Form::text('name', null, ['class' => 'form-control']) !!}
-         
                 </div>
 
-        <!--        <div class="form-group">
-                    {!! Form::label('breed_id', '種類') !!}
-                      {!! Form::text('breed_id', null, ['class' => 'form-control']) !!}
-                </div>
-         -->       
+         
+                           {!! Form::label('breed', '小分類名') !!}
+                        <select name="breed">
+                        @foreach ($breeds as $breed)
+                            <option value="{{ $breed -> id }}">{{ $breed -> name }}</option>
+                        @endforeach
+                        </select>
+              
+         
                  <div class="form-group">
                     {!! Form::label('sex', '性別') !!}
                     {!! Form::text('sex', null, ['class' => 'form-control']) !!}

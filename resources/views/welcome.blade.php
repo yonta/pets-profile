@@ -36,5 +36,11 @@
     </div>
  </div>
  
+  {{-- 大分類登録ページへのリンク --}}
+   <td>{!! link_to_route('classifications.create', '大分類登録ページ', []) !!}</td>
+  {{-- 中分類登録ページへのリンク --}}
+   <td>{!! link_to_route('species.create', '中分類登録ページ', []) !!}</td>
+  {{-- 小分類登録ページへのリンク --}}
+   <td>{!! link_to_route('breeds.create', '小分類登録ページ', []) !!}</td>
     
 @endsection

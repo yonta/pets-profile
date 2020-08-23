@@ -20,6 +20,11 @@ Route::get('/', function () {
 Route::resource('pets', 'PetsController');
 Route::resource('breeds', 'BreedsController');
  Route::resource('photos', 'PhotosController');
+ 
+Route::resource('classifications', 'ClassificationsController', ['only' => ['store','create']]); //大分類登録
+Route::resource('species', 'SpeciesController', ['only' => ['store','create']]); //中分類登録
+Route::resource('breeds', 'BreedsController', ['only' => ['store','create']]); //小分類登録
+ 
 // ペット種類を取得
 Route::get('breeds/{id}', 'BreedsController@show');
 Route::get('users/show/{id}','UsersController@show') -> name('users.show');

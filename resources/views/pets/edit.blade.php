@@ -14,10 +14,13 @@
                     {!! Form::label('name', 'お名前') !!}
                     {!! Form::text('name', null, ['class' => 'form-control']) !!}
                 </div>
-
-                <div class="form-group">
-                    {!! Form::label('breed', '種類') !!}
-                </div>
+ 
+                   {!! Form::label('breed', '小分類名') !!}
+                <select name="breed">
+                @foreach ($breeds as $breed)
+                    <option value="{{ $breed -> id }}">{{ $breed -> name }}</option>
+                @endforeach
+                </select>
                 
                  <div class="form-group">
                     {!! Form::label('sex', '性別') !!}

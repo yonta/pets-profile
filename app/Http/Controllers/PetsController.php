@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Pet; // 追加
 use App\Photo;
 use App\User;
-
+use App\Breed;
 
 class PetsController extends Controller
 {
@@ -38,25 +38,30 @@ class PetsController extends Controller
     {
         //idの値でペットを検索して表示
         $pet = Pet::findOrFail($id);
-      $user = User::findOrFail($pet->user_id);
+        $user = User::findOrFail($pet->user_id);
         $photos = $pet->photos()->get();
+        $breeds = Breed::findOrFail($pet->breed_id);
+        
             
         //ペット詳細ビューで表示
         return view('pets.show', [
             'pet' => $pet,
             'photos' => $photos,
             'user' => $user,
-        ]);
+                'breed' => $breeds,
+                ]);
     }
     
     //新規ペット登録
     public function create()
     {
         $pets = new Pet;
-        
+        $breeds = Breed::get();
+             
         // メッセージ作成ビューを表示
         return view('pets.create', [
             'pets' => $pets,
+             'breeds' => $breeds,
         ]);
     }
 
@@ -67,8 +72,7 @@ class PetsController extends Controller
           'name' => $request->name,
         'birthday' => $request->birthday,
         'sex' => $request->sex,
-        //とりあえず保留
-        'breed_id' => 1,
+        'breed_id' => $request->breed,
         'introduction' => $request->introduction,
          'cute_count' => 0,
          'main_URL'=>$request->main_URL,
@@ -83,10 +87,12 @@ class PetsController extends Controller
     {
         // idの値でペットを検索して取得
         $pet = Pet::findOrFail($id);
+$breeds = Breed::get();
 
         // メッセージ編集ビューでそれを表示
         return view('pets.edit', [
             'pet' => $pet,
+                'breeds' => $breeds,
         ]);
     }
     
@@ -110,6 +116,7 @@ class PetsController extends Controller
             $pet->name = $request->name;
             $pet->birthday = $request->birthday;
             $pet->sex = $request->sex;
+            $pet->breed_id = $request->breed;
             $pet->introduction = $request->introduction;
             $pet->main_URL = $request->main_URL;
             
