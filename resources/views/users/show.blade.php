@@ -24,14 +24,14 @@
         </div>
     </div>
   
-  <div class="card" style="background-color: #d1ecf1";>
+<div class="card" style="background-color: #d1ecf1";>
 <?php $count = 0; ?>
-       <div class="row mx-2">
-@foreach ($user-> pets()->get() as $pet)
-<?php $count++; ?>
-
-           {{-- ペットページへのリンク --}}
-           <div class = "col-6 ">
+    <div class="row mx-2">
+    @foreach ($user-> pets()->get() as $pet)
+    <?php $count++; ?>
+    
+    {{-- ペットページへのリンク --}}
+        <div class = "col-6 ">
             <div class="card my-2 mx-auto">
                 <div class="row no-gutters">
                     <div class="col-lg-5">
@@ -43,26 +43,24 @@
                     <div class="col-lg-5">
                         <div class="card-body">
                             <p class="mb-0">お名前：{!! nl2br(e($pet->name)) !!}</p>
-                
+                            
                             {{-- ペット詳細ページへのリンク --}}
                             <td>{!! link_to_route('pets.show', '詳細ページ', ['pet' => $pet->id]) !!}</td>
                         </div>
                     </div>
                 </div>
             </div>
-            </div>
-@endforeach
-@if (Auth::id() == $user->id)
-            {{-- ペット登録ページへのリンク。登録ペット数が４寄り小さければ表示 --}}
-            @if($count< 4) 
-            <div>
-            </div>
-            <div class="card col-sm-5 mx-2 my-2">
-            {!! link_to_route('pets.create', '追加', [], ['class' => 'btn btn-light']) !!}
-            </div>
-            @endif
-       </div>
+        </div>
+        @endforeach
+        @if (Auth::id() == $user->id)
+        {{-- ペット登録ページへのリンク。登録ペット数が４寄り小さければ表示 --}}
+        @if($count< 4) 
+        <div class="card col-sm-5 mx-2 my-2">
+        {!! link_to_route('pets.create', '追加', [], ['class' => 'btn btn-light']) !!}
+        </div>
+    @endif
+    </div>
 @endif
+</div>
 
- </div>
 @endsection
