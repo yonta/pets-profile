@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-  
+ 
   <div class="card">
         <img class="card-img" src="https://pbs.twimg.com/media/EgBNK8nUwAEkiCq?format=jpg&name=medium" alt="健やかな文鳥">
          <div class="card-img-overlay" style="
@@ -12,6 +12,9 @@
               <h1><p class="text-white">チュン！！！</p></h1> 
          </div>
    </div>
+<div class="alert alert-danger col-8 offset-sm-2 my-2" role="alert">
+  小さい画面で見るとレイアウトが著しく崩れます
+</div>
    <div class = "row my-4">
     <div class = "col-6">
      <div class="card mx-auto">

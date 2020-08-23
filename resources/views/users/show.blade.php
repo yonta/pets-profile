@@ -52,8 +52,10 @@
         @if (Auth::id() == $user->id)
         {{-- ペット登録ページへのリンク。登録ペット数が４寄り小さければ表示 --}}
         @if($count< 4) 
-        <div class="card col-sm-5 mx-2 my-2">
-            {!! link_to_route('pets.create', '追加', [], ['class' => 'btn btn-light']) !!}
+        <div class = "col-6 ">
+            <div class="card my-2 mx-auto">
+                {!! link_to_route('pets.create', 'ペットを追加する', [], ['class' => 'btn btn-light']) !!}
+            </div>
         </div>
         @endif
         @endif
