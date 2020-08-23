@@ -1,26 +1,40 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="center jumbotron">
-        <div class="text-center">
-            <h1>ここに可愛い鳥の写真</h1>
-        </div>
+  
+  <div class="card">
+        <img class="card-img" src="https://pbs.twimg.com/media/EgBNK8nUwAEkiCq?format=jpg&name=medium" alt="健やかな文鳥">
+         <div class="card-img-overlay" style="
+             padding: 0;
+             top: calc(50% - 0.5rem);
+             text-align: center;
+             font-weight: bold;">
+              <h1><p class="text-white">チュン！！！</p></h1> 
+         </div>
+   </div>
+   <div class = "row my-4">
+    <div class = "col-6">
+     <div class="card mx-auto">
+       <div class="card-header">
+         お知らせ
+       </div>
+       <div class="card-body">
+          <p>20/08/22　テスト版</p>
+       </div>
+      </div>
     </div>
     
-    @if (Auth::check())
-        <div class="row">
-            <div class="col-sm-8">
-                {{-- ペット一覧 --}}
-                @include('pets.pets')
-            </div>
-        </div>
-    @else
-        <div class="center jumbotron">
-            <div class="text-center">
-                <h1>Welcome to the Microposts</h1>
-                {{-- ユーザ登録ページへのリンク --}}
-                {!! link_to_route('signup.get', 'Sign up now!', [], ['class' => 'btn btn-lg btn-primary']) !!}
-            </div>
-        </div>
-    @endif
+      <div class = "col-6">
+    <div class="card mx-auto">
+      <div class="card-header">
+        ここ何入れよう
+      </div>
+      <div class="card-body">
+          <p>20/08/22　眠い</p>
+      </div>
+    </div>
+    </div>
+ </div>
+ 
+    
 @endsection

@@ -22,6 +22,14 @@
                 
                   {!! Form::submit('更新', ['class' => 'btn btn-primary btn-block']) !!}
             {!! Form::close() !!}
+            
+                
+                {{-- 投稿削除ボタンのフォーム --}}
+              
+                {!! Form::open(['route' => ['users.destroy', $user -> id], 'method' => 'delete', 'onsubmit' => 'return confirm("アカウントが削除されます。よろしいですか?");']) !!}
+                    {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm', 'data-toggle' => 'modal', 'data-target' => '#exampleModalCenter']) !!}
+                {!! Form::close() !!}
+
         </div>
     </div>
 @endsection

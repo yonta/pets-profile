@@ -1,14 +1,3 @@
-          <?php
-           function ConfirmDelete()
-                  {
-                    return false;
-                  }
-           
-           ?>
-            
-            
-
-
 @extends('layouts.app')
 
 @section('content')
@@ -46,8 +35,8 @@
                 </div>
                 
                  <div class="form-group">
-                    {!! Form::label('photo', 'プロフィール画像') !!}
-                    {!! Form::text('photo', null, ['class' => 'form-control']) !!}
+                    {!! Form::label('main_URL', 'プロフィール画像') !!}
+                    {!! Form::text('main_URL', null, ['class' => 'form-control']) !!}
                 </div>
 
                 {!! Form::submit('更新', ['class' => 'btn btn-primary btn-block']) !!}
@@ -59,10 +48,6 @@
                 {!! Form::open(['route' => ['pets.destroy', $pet -> id], 'method' => 'delete', 'onsubmit' => 'return confirm("このペットの情報が全て削除されます。よろしいですか?");']) !!}
                     {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm', 'data-toggle' => 'modal', 'data-target' => '#exampleModalCenter']) !!}
                 {!! Form::close() !!}
-            
- 
-
-
 
             @endif
         </div>

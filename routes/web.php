@@ -11,8 +11,10 @@
 |
 */
 
-Route::get('/', 'PetsController@index');
-
+//Route::get('/', 'PetsController@index');
+Route::get('/', function () {
+    return view('welcome');
+});
 
 
 Route::resource('pets', 'PetsController');
@@ -20,6 +22,7 @@ Route::resource('breeds', 'BreedsController');
  Route::resource('photos', 'PhotosController');
 // ペット種類を取得
 Route::get('breeds/{id}', 'BreedsController@show');
+Route::get('users/show/{id}','UsersController@show') -> name('users.show');
 
 // ユーザ登録
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');

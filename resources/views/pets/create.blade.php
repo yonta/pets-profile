@@ -15,11 +15,11 @@
          
                 </div>
 
-                <div class="form-group">
+        <!--        <div class="form-group">
                     {!! Form::label('breed_id', '種類') !!}
                       {!! Form::text('breed_id', null, ['class' => 'form-control']) !!}
                 </div>
-                
+         -->       
                  <div class="form-group">
                     {!! Form::label('sex', '性別') !!}
                     {!! Form::text('sex', null, ['class' => 'form-control']) !!}
@@ -36,8 +36,8 @@
                 </div>
                 
                  <div class="form-group">
-                    {!! Form::label('URL', 'プロフィール画像') !!}
-                    {!! Form::text('URL', null, ['class' => 'form-control']) !!}
+                    {!! Form::label('main_URL', 'プロフィール画像') !!}
+                    {!! Form::text('main_URL', null, ['class' => 'form-control']) !!}
                 </div>
 
                 {!! Form::submit('更新', ['class' => 'btn btn-primary btn-block']) !!}

@@ -60,12 +60,20 @@ class UsersController extends Controller
                     
                     \Auth::user()->save();
                 }
-        
-        
-        
-        
-
         // トップページへリダイレクトさせる
+        return redirect('/');
+    }
+    
+      public function destroy($id)
+    {
+        // idの値で投稿を検索して取得
+       $user = User::findOrFail($id);
+
+           if (\Auth::check()) { // 認証済みの場合
+           $user->delete();
+        
+    }
+   // トップページへリダイレクトさせる
         return redirect('/');
     }
 }

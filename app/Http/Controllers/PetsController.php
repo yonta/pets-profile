@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Pet; // 追加
 use App\Photo;
+use App\User;
+
 
 class PetsController extends Controller
 {
@@ -36,13 +38,14 @@ class PetsController extends Controller
     {
         //idの値でペットを検索して表示
         $pet = Pet::findOrFail($id);
-        
-            $photos = $pet->photos()->get();
+      $user = User::findOrFail($pet->user_id);
+        $photos = $pet->photos()->get();
             
         //ペット詳細ビューで表示
         return view('pets.show', [
             'pet' => $pet,
             'photos' => $photos,
+            'user' => $user,
         ]);
     }
     
@@ -50,12 +53,10 @@ class PetsController extends Controller
     public function create()
     {
         $pets = new Pet;
-        $photos = new Photo;
         
         // メッセージ作成ビューを表示
         return view('pets.create', [
             'pets' => $pets,
-            'photos' => $photos,
         ]);
     }
 
@@ -66,9 +67,11 @@ class PetsController extends Controller
           'name' => $request->name,
         'birthday' => $request->birthday,
         'sex' => $request->sex,
-        'breed_id' => $request->breed_id,
+        //とりあえず保留
+        'breed_id' => '1',
         'introduction' => $request->introduction,
          'cute_count' => 0,
+         'main_URL'=>$request->main_URL,
        ]);
 
         // トップページへリダイレクトさせる
@@ -108,6 +111,7 @@ class PetsController extends Controller
             $pet->birthday = $request->birthday;
             $pet->sex = $request->sex;
             $pet->introduction = $request->introduction;
+            $pet->main_URL = $request->main_URL;
             
               $pet->save();
                     
@@ -139,11 +143,8 @@ class PetsController extends Controller
         // idの値で投稿を検索して取得
         $pet = Pet::findOrFail($id);
         // 認証済みユーザ（閲覧者）がその投稿の所有者である場合は、投稿を削除
-        if($pet!=null)
-        {
             if (\Auth::id() === $pet->user_id ){
-         //   $pet->delete();
-        }
+           $pet->delete();
     }
    // トップページへリダイレクトさせる
         return redirect('/');
