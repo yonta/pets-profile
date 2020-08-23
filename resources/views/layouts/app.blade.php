@@ -20,7 +20,7 @@
         </div>
         
        <footer class="footer" style="width:100%;  
-                  
+                        position: fixed;
                     bottom: 0; /*下に固定*/
                     height:50px;
                     background-color: #212529; color:white; text-align: center;">
