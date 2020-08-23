@@ -18,11 +18,6 @@
                     {!! Form::label('introduction1', '説明') !!}
                     {!! Form::text('introduction1', null, ['class' => 'form-control']) !!}
             </div>
-                <div class="form-group">
-                    {!! Form::label('introduction2', '場所') !!}
-                    {!! Form::text('introduction2', null, ['class' => 'form-control']) !!}
-                </div>
-                           <img class="rounded img-fluid my-1" src= "{{$photo -> URL }}" alt="">
                 {!! Form::submit('更新', ['class' => 'btn btn-primary btn-block']) !!}
             {!! Form::close() !!}
         </div>

@@ -58,11 +58,21 @@ class PhotosController extends Controller
     {
       //idの値でペットを検索して表示
       $pet = Pet::findOrFail($id);
+         
+        $intro1 = ''; 
+         
+          if($request->introduction1 != '' && $request->introduction1 != null )
+        {
+            $intro1 =$request->introduction1;
+        }else
+        {
+           $intro1 = '';
+        }
         
       $pet->photos()->create([
-    //  $request->pet()->photos()->create([
         'URL' => $request->URL,
-        'introduction1' => $request->introduction1,
+         'introduction1' => $intro1,
+      
         'introduction2' => '',
        ]);
        
@@ -90,9 +100,20 @@ class PhotosController extends Controller
         // idの値で写真を検索して取得
         $photo = Photo::findOrFail($id);
         
+         $intro1 = ''; 
+         
+          if($request->introduction1 != '' && $request->introduction1 != null )
+        {
+            $intro1 =$request->introduction1;
+        }else
+        {
+           $intro1 = '';
+        }
+        
+        
              // ペットの情報を更新する時
             $photo->URL = $request->URL;
-            $photo->introduction1 = $request->introduction1;
+            $photo->introduction1 = $intro1;
    
         $photo->save();
 
