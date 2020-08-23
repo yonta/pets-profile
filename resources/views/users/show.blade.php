@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    @if (Auth::check())
+ 
     {{--ユーザー情報を表示--}}
     <div class="card my-2">
         <div class="row">
@@ -16,8 +16,10 @@
                 {{ $user->introduction }} <!-- usersのintroduction -->
             </div>
                <div class = "col-1">
+@if (Auth::id() == $user->id)
             {{-- 編集ページへのリンク --}}
             {!! link_to_route('users.edit', '編集', ['user' => $user->id], ['class' => 'btn btn-light']) !!}
+@endif
             </div>
         </div>
     </div>
@@ -50,6 +52,7 @@
             </div>
             </div>
 @endforeach
+@if (Auth::id() == $user->id)
             {{-- ペット登録ページへのリンク。登録ペット数が４寄り小さければ表示 --}}
             @if($count< 4) 
             <div>
@@ -60,5 +63,6 @@
             @endif
        </div>
 @endif
+
  </div>
 @endsection

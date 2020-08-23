@@ -4,10 +4,12 @@
     <div class="text-center">
         <h1>登録</h1>
     </div>
-
+<div class="alert alert-danger col-8 offset-sm-2" role="alert">
+  このサイトは、管理者が研修で作成したものです。予告なく消滅する場合があります。
+</div>
+<br>
     <div class="row">
         <div class="col-sm-6 offset-sm-3">
-
             {!! Form::open(['route' => 'signup.post']) !!}
                 <div class="form-group">
                     {!! Form::label('name', 'Name') !!}

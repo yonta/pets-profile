@@ -11,31 +11,29 @@
             {!! Form::model([$pets,$breeds], ['route' => 'pets.store']) !!}
                 <div class="form-group">
                     {!! Form::label('name', 'お名前') !!}
-                    {!! Form::text('name', null, ['class' => 'form-control']) !!}
+                    {!! Form::text('name', null, ['class' => 'form-control' , 'required']) !!}
                 </div>
-
-         
-                           {!! Form::label('breed', '小分類名') !!}
-                        <select name="breed">
-                        @foreach ($breeds as $breed)
-                            <option value="{{ $breed -> id }}">{{ $breed -> name }}</option>
-                        @endforeach
-                        </select>
-              
-         
+       
+                   {!! Form::label('breed', '小分類名') !!}
+                <select name="breed">
+                @foreach ($breeds as $breed)
+                    <option value="{{ $breed -> id }}">{{ $breed -> name }}</option>
+                @endforeach
+                </select>
+             
                  <div class="form-group">
                     {!! Form::label('sex', '性別') !!}
-                    {!! Form::text('sex', null, ['class' => 'form-control']) !!}
+                    {!! Form::text('sex', null, ['class' => 'form-control', 'required']) !!}
                 </div>
                 
                  <div class="form-group">
                     {!! Form::label('birthday', '誕生日') !!}
-                    {!! Form::text('birthday',null,  ['class' => 'form-control']) !!}
+                    {!! Form::text('birthday',null,  ['class' => 'form-control', 'required']) !!}
                 </div>
                 
                  <div class="form-group">
                     {!! Form::label('introduction', 'アピールポイント') !!}
-                    {!! Form::text('introduction', null, ['class' => 'form-control']) !!}
+                    {!! Form::text('introduction', null, ['class' => 'form-control', 'required']) !!}
                 </div>
                 
                  <div class="form-group">

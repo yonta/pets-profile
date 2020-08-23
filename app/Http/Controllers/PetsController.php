@@ -67,6 +67,8 @@ class PetsController extends Controller
 
     public function store(Request $request)
     {
+
+        
         // 認証済みユーザ（閲覧者）の投稿として作成（リクエストされた値をもとに作成）
       $request->user()->pets()->create([
           'name' => $request->name,
@@ -76,6 +78,7 @@ class PetsController extends Controller
         'introduction' => $request->introduction,
          'cute_count' => 0,
          'main_URL'=>$request->main_URL,
+     
        ]);
 
         // トップページへリダイレクトさせる
