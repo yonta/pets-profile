@@ -7,7 +7,7 @@
        {!! Form::model($classifications, ['route' => 'classifications.store']) !!}
                 <div class="form-group">
                     {!! Form::label('name', '大分類名') !!}
-                    {!! Form::text('name', null, ['class' => 'form-control']) !!}
+                    {!! Form::text('name', null, ['class' => 'form-control', 'required']) !!}
                 </div>
                     {!! Form::submit('更新', ['class' => 'btn btn-primary btn-block']) !!}
         {!! Form::close() !!}

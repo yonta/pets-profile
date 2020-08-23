@@ -4,7 +4,7 @@
 {{--ユーザー情報を表示--}}
     <div class="card my-2">
         <div class="row">
-            <img class="col-sm-1 mr-2 rounded" src="{{ $user->url }}, ['size' => 50]" alt="">
+            <img class="col-sm-1 mr-2 rounded" src="{{ $user->url }}" alt="">
             <div class = "col-4">
                 <h3>{{ $user->name }}さんのお家</h3>
             </div>

@@ -16,7 +16,7 @@
        
                 <div class="form-group">
                     {!! Form::label('name', '小分類名') !!}
-                    {!! Form::text('name', null, ['class' => 'form-control']) !!}
+                    {!! Form::text('name', null, ['class' => 'form-control', 'required']) !!}
                 </div>
                     {!! Form::submit('更新', ['class' => 'btn btn-primary btn-block']) !!}
         {!! Form::close() !!}
