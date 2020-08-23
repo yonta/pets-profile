@@ -45,7 +45,7 @@ Route::group(['middleware' => ['auth']], function () {
  
 
     Route::resource('pets', 'PetsController', ['only' => ['store', 'destroy']]); //ペット登録と削除
-    Route::resource('pets', 'PetsController');
+
     
      //   Route::resource('photos', 'PhotosController', ['only' => ['store', 'destroy']]); //ペット登録と削除
          //  Route::resource('photos', 'PhotosController');
