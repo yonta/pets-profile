@@ -117,8 +117,8 @@ class PhotosController extends Controller
    
         $photo->save();
 
-        // トップページへリダイレクトさせる
-        return redirect('/');
+                    // 前のURLへリダイレクトさせる
+                return back();
     }
     
        public function destroy($id)

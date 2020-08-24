@@ -47,7 +47,7 @@
       </div>
       <div class="card-body">
           @foreach ($pets as $pet)
-          <p>{{ $pet->created_at}} : {{ $pet->name}}ちゃんの情報が登録されました。</p>
+          <p>{{ substr($pet->created_at,0, 10)}} : {{ $pet->name}}ちゃんの情報が登録されました。</p>
         　@endforeach
       </div>
     </div>
