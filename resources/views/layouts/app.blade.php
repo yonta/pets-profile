@@ -8,17 +8,17 @@
         
     </head>
 
-    <body  style="background-color: #78add0;  margin:0; padding:0;">
+    <body  style="background-color: #78add0;  margin:0; padding:0; display: flex;
+          flex-direction: column;
+          height: 100vh;
+          margin-top: 0;">
 
         {{-- ナビゲーションバー --}}
         @include('commons.navbar')
 
-        <div class="container" style="background-color: #f7f1d8;  display: flex;
-          flex-direction: column;
-          height: 100vh;
-          margin-top: 0;">
+        <div class="container" style="background-color: #f7f1d8;">
               <div class="box" style="flex: 1 1 100%;
-              overflow-y: scroll;">
+              overflow-x: hidden; ">
         
                         {{-- エラーメッセージ --}}
                         @include('commons.error_messages')

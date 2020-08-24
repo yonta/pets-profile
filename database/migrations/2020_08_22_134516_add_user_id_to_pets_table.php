@@ -14,7 +14,9 @@ class AddUserIdToPetsTable extends Migration
     public function up()
     {
         Schema::table('pets', function (Blueprint $table) {
-             $table->string('main_URL')->default('https://1.bp.blogspot.com/-R_8W_NcubL4/XQjt6FQkMzI/AAAAAAABTNo/J0gCt6jDXsYC3pg_UdL57p1zGwVHFPoIACLcBGAs/s800/animalface_suzume.png');
+            //↓ここミス
+             $table->string('main_URL')->
+             default('https://1.bp.blogspot.com/-R_8W_NcubL4/XQjt6FQkMzI/AAAAAAABTNo/J0gCt6jDXsYC3pg_UdL57p1zGwVHFPoIACLcBGAs/s800/animalface_suzume.png');
         });
     }
 
