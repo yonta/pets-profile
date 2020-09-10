@@ -5,6 +5,11 @@
         <title>PetsProfile</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+        <style>
+          .nav-item a{
+                color:white;
+            }
+        </style>
     </head>
 
     <body  style="background-color: #f7f1d8;  margin:0; padding:0; display: flex;
