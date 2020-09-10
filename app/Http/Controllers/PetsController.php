@@ -1,41 +1,98 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Controllers\PetsController,
+    Session;
 
 use Illuminate\Http\Request;
 use App\Pet; // 追加
 use App\Photo;
 use App\User;
 use App\Breed;
+use App\Classification;
+use App\Specie;
+
 
 class PetsController extends Controller
 {
      public function index()
     {
-        $data = [];
-        
-        if (\Auth::check()) { // 認証済みの場合
-        
-            // 認証済みユーザを取得
-            $user = \Auth::user();
-            // ペットを取得
-            $pets = $user-> pets()->get();
-
-            $data = [
-                'user' => $user,
-                'pets' => $pets,
-            ];
-        }
-
-        // Welcomeビューでそれらを表示
-       // return view('welcome', $data);
-        return view('users.show', $data);
+       
     }
     
+       public function search($bunrui,$id)
+    {
+      $pets=[];
+      $searching = "";
+      
+        if($bunrui == 'classification')
+        {
+            $breeds=[];
+            $searching = Classification::findOrFail($id)->name;
+            
+            //中分類を取得->
+            $sp = Specie::where('classification_id', '=', $id )->get();
+            
+            //小分類を取得
+            foreach ($sp as $spe){
+                $plusB =[];
+                $plusB = Breed::where('species_id', '=', $spe->id )->get();
+             
+                 //ペットを取得
+                 foreach ($plusB as $bre){
+                    $pluspets =[];
+                    $pluspets = Pet::where('breed_id', '=', $bre->id )->get();
+                 
+                    if(count($pluspets)!= 0){
+                        foreach($pluspets as $plus){
+                            $pets[] = $plus;
+                        }
+                    }
+                }
+            }
+            
+        }else if($bunrui == 'species'){
+            
+            $searching = Specie::findOrFail($id)->name;
+            $br = Breed::where('species_id', '=', $id)->get();
+            
+            foreach ($br as $bre){
+                 $pluspets =[];
+                 $pluspets = Pet::where('breed_id', '=', $bre->id )->get();
+                 
+              if(count($pluspets)!= 0){
+                    foreach($pluspets as $plus){
+                            $pets[] = $plus;
+                        }
+              }
+            }
+
+              
+        }else if($bunrui == 'breed'){
+            
+            $searching = Breed::findOrFail($id)->name;
+            $pets = Pet::where('breed_id', '=', $id )->get();
+        }
+
+        return view('pets.index', [
+            'pets' => $pets,
+            'searching' => $searching,
+        ]);
+    }
     
     //idでアクセスされた場合のペット取得
     public function show($id)
     {
+        
+       // セッションIDの再発行
+        Session::regenerate();
+
+        // セッションの値を全て取得
+        $data = Session::all();
+
+         // ユーザー情報を保存する
+        Session::put('pet_id', $id);
+        
         //idの値でペットを検索して表示
         $pet = Pet::findOrFail($id);
         $user = User::findOrFail($pet->user_id);
@@ -45,9 +102,9 @@ class PetsController extends Controller
             
         //ペット詳細ビューで表示
         return view('pets.show', [
-            'pet' => $pet,
-            'photos' => $photos,
-            'user' => $user,
+                'pet' => $pet,
+                'photos' => $photos,
+                'user' => $user,
                 'breed' => $breeds,
                 ]);
     }
@@ -67,22 +124,19 @@ class PetsController extends Controller
 
     public function store(Request $request)
     {
-
-        
         // 認証済みユーザ（閲覧者）の投稿として作成（リクエストされた値をもとに作成）
-      $request->user()->pets()->create([
+          $request->user()->pets()->create([
           'name' => $request->name,
-        'birthday' => $request->birthday,
-        'sex' => $request->sex,
-        'breed_id' => $request->breed,
-        'introduction' => $request->introduction,
-         'cute_count' => 0,
-         'main_URL'=>$request->main_URL,
+          'birthday' => $request->birthday,
+          'sex' => $request->sex,
+          'breed_id' => $request->breed,
+          'introduction' => $request->introduction,
+          'cute_count' => 0,
+          'main_URL'=>$request->main_URL,
      
        ]);
 
-        // トップページへリダイレクトさせる
-        return redirect('/');
+        return redirect()->route('users.show', ['user' => \Auth::user()->id]);
     }
     
     // getでpets/id/editにアクセスされた場合の「更新画面表示処理」
@@ -90,7 +144,7 @@ class PetsController extends Controller
     {
         // idの値でペットを検索して取得
         $pet = Pet::findOrFail($id);
-$breeds = Breed::get();
+        $breeds = Breed::get();
 
         // メッセージ編集ビューでそれを表示
         return view('pets.edit', [
@@ -124,10 +178,8 @@ $breeds = Breed::get();
             $pet->main_URL = $request->main_URL;
             
               $pet->save();
-                    
 
-        // トップページへリダイレクトさせる
-        return redirect('/');
+            return redirect()->route('pets.show', ['pet' => $id]);
         }
               
 
@@ -155,9 +207,9 @@ $breeds = Breed::get();
         // 認証済みユーザ（閲覧者）がその投稿の所有者である場合は、投稿を削除
             if (\Auth::id() === $pet->user_id ){
            $pet->delete();
-    }
-   // トップページへリダイレクトさせる
-        return redirect('/');
+        }
+
+        return redirect()->route('users.show', ['user' => \Auth::user()->id]);
     }
     
 }

@@ -1,8 +1,10 @@
 <?php
 
 use App\Pet;
-$pets = Pet::orderBy('created_at', 'desc')->paginate(10);
+use App\Classification;
 
+$pets = Pet::orderBy('created_at', 'desc')->paginate(10);
+$classification = Classification::get();
 ?>
 
 @extends('layouts.app')
@@ -19,6 +21,7 @@ $pets = Pet::orderBy('created_at', 'desc')->paginate(10);
               <h1><p class="text-white">チュン！！！</p></h1> 
          </div>
    </div>
+
 <div class="alert alert-danger col-8 offset-sm-2 my-2" role="alert">
   小さい画面で見るとレイアウトが著しく崩れます
 </div>
@@ -38,6 +41,9 @@ $pets = Pet::orderBy('created_at', 'desc')->paginate(10);
                 <p>20/08/21　分類のテキストを必須入力にしました</p>
                 <p>20/08/21　フッターの位置を修正しました</p>
                 <p>20/08/21　ゲストユーザーがページを閲覧できるようにしました</p>
+                <p>20/08/31  ナビゲーションバーの中身を中央に寄せました。</p>
+                <p>20/08/31  色を整えました。</p>
+                <p>20/08/31  検索機能が追加されました。</p>
             </div>
         </div>
     </div>

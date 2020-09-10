@@ -4,6 +4,7 @@
     <div class="text-center">
         <h1>小分類登録</h1>
     </div>
+    {{$pet_id}}
        {!! Form::model([$breeds, $species], ['route' => 'breeds.store']) !!}
        
         <select name="specie">
@@ -20,5 +21,7 @@
                 </div>
                     {!! Form::submit('更新', ['class' => 'btn btn-primary btn-block']) !!}
         {!! Form::close() !!}
+         {{-- ペット詳細ページへのリンク --}}
+       {!! link_to_route('pets.edit', '戻る', ['pet' => $pet_id], ['class' => 'btn btn-light']) !!}
     </div>
 @endsection

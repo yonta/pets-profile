@@ -3,7 +3,7 @@
 @section('content')
  
     {{--ユーザー情報を表示--}}
-<div class="card my-2">
+<a class="card my-2" >
     <div class="row">
         <img class="col-sm-1 mr-2 rounded" src="{{ $user->url }}" alt="">
         <div class = "col-4">
@@ -20,7 +20,7 @@
             @endif
         </div>
     </div>
-</div>
+</a>
   
 <div class="card" style="background-color: #d1ecf1";>
     <?php $count = 0; ?>

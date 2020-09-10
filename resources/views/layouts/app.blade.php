@@ -5,10 +5,9 @@
         <title>PetsProfile</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
-        
     </head>
 
-    <body  style="background-color: #78add0;  margin:0; padding:0; display: flex;
+    <body  style="background-color: #f7f1d8;  margin:0; padding:0; display: flex;
           flex-direction: column;
           height: 100vh;
           margin-top: 0;">
@@ -16,10 +15,11 @@
         {{-- ナビゲーションバー --}}
         @include('commons.navbar')
 
-        <div class="container" style="background-color: #f7f1d8;">
+        <div class="container" style="background-color: white">
               <div class="box" style="flex: 1 1 100%;
               overflow-x: hidden; ">
-        
+    
+    
                         {{-- エラーメッセージ --}}
                         @include('commons.error_messages')
             
@@ -40,6 +40,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
         <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>
+        
+        
     </body>
     
  

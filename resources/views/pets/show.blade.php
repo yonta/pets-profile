@@ -65,7 +65,7 @@
                 <div >
                     {{$photo -> introduction1}}
                 </div>
-                <br>  <br>
+                <br><br>
                 <div class = "row py-1" style = "bottom: 0;  position: absolute;">
                     @if (Auth::id() == $pet->user_id)
                     　  {{-- 投稿編集ボタンのフォーム --}}

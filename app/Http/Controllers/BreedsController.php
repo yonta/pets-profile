@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\PetsController,
+    Session;
+    
 use Illuminate\Http\Request;
 use App\Breed;
 use App\Specie;
@@ -23,6 +26,9 @@ class BreedsController extends Controller
      //新規小分類
     public function create()
     {
+        // IDを取得する
+        $id = Session::get('pet_id');
+        
         $breed = new Breed;
         $species = Specie::get();
          
@@ -30,6 +36,7 @@ class BreedsController extends Controller
         return view('breeds.create', [
             'breeds' => $breed,
             'species' => $species,
+            'pet_id'=> $id,
         ]);
     }
 
@@ -42,8 +49,8 @@ class BreedsController extends Controller
           'species_id'=> $request->specie,
        ]);
 
-        // トップページへリダイレクトさせる
-        return redirect('/');
+      // 前のURLへリダイレクトさせる
+        return back();
     }
     
 }

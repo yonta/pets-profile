@@ -24,5 +24,7 @@
                 </div>
                     {!! Form::submit('更新', ['class' => 'btn btn-primary btn-block']) !!}
         {!! Form::close() !!}
+          {{-- ペット詳細ページへのリンク --}}
+       {!! link_to_route('pets.edit', '戻る', ['pet' => $pet_id], ['class' => 'btn btn-light']) !!}
     </div>
 @endsection

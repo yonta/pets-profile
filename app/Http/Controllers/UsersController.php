@@ -14,13 +14,7 @@ class UsersController extends Controller
         // ユーザ一覧をidの降順で取得
         //$users = User::get()
         $users = User::orderBy('id', 'desc')->paginate(20);
-         //  logger($users);
-           
-         //  foreach($users as $user){
-         //   logger($user->name);
-         //  }
-           
-        
+
         // ユーザ一覧ビューでそれを表示
         return view('users.index', [
             'users' => $users,
@@ -59,16 +53,19 @@ class UsersController extends Controller
             'introduction' => 'required|max:30',
         ]);
         
+        $alturl = "";
+        if($request->url != null){
+            $alturl = $request->url;
+        }
              if (\Auth::check()) { // 認証済みの場合
                     \Auth::user()->name = $request->name;
                     \Auth::user()->introduction = $request->introduction;
-                    \Auth::user()->url = $request->url;
-                    
-                    
+                    \Auth::user()->url = $alturl;
+
                     \Auth::user()->save();
                 }
-        // トップページへリダイレクトさせる
-        return redirect('/');
+                
+       return redirect()->route('users.show', ['user' => $id]);
     }
     
       public function destroy($id)
@@ -80,7 +77,7 @@ class UsersController extends Controller
            $user->delete();
         
     }
-   // トップページへリダイレクトさせる
+        // トップページへリダイレクトさせる
         return redirect('/');
     }
 }

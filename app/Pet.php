@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pet extends Model
 {
-    protected $fillable = ['user_id','name','sex','introduction','breed_id','birthday','cute_count',];
+    protected $fillable = ['user_id','name','sex','introduction','breed_id','birthday','cute_count','main_URL'];
 
     /**
      * このペットを所有するユーザ。（ Userモデルとの関係を定義）

@@ -76,10 +76,7 @@ class PhotosController extends Controller
         'introduction2' => '',
        ]);
        
-        
-
-        // トップページへリダイレクトさせる
-        return redirect('/');
+        return redirect()->route('pets.show', ['pet' => $id]);
     }
     
       // getでpets/id/editにアクセスされた場合の「更新画面表示処理」
@@ -109,16 +106,14 @@ class PhotosController extends Controller
         {
            $intro1 = '';
         }
-        
-        
+
              // ペットの情報を更新する時
             $photo->URL = $request->URL;
             $photo->introduction1 = $intro1;
    
-        $photo->save();
+            $photo->save();
 
-                    // 前のURLへリダイレクトさせる
-                return back();
+        return redirect()->route('pets.show', ['pet' => $photo->pet_id]);
     }
     
        public function destroy($id)
@@ -132,8 +127,8 @@ class PhotosController extends Controller
         {
             if (\Auth::id() === $pet->user_id ){
             $photo->delete();
+            }
         }
-    }
         // 前のURLへリダイレクトさせる
         return back();
     }
