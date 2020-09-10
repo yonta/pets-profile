@@ -20,7 +20,8 @@ if(isset($_GET['name'])) {
 ?>
 
 
-<header>
+<header >
+    
     <nav class="navbar navbar-expand-* navbar-dark p-0" style="background-color: rgba( 59, 158, 219, 0.55 ); backdrop-filter: blur(10px);
     position: fixed;
     width: 100%;
@@ -127,10 +128,4 @@ $bre = Breed::where('species_id', '=', $specie->id )->get();
               </ul>
         
     </nav>
-    
-    
-  
-
-    
-    
 </header>

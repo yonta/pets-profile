@@ -20,7 +20,7 @@
         {{-- ナビゲーションバー --}}
         @include('commons.navbar')
 
-        <div class="container" style="background-color: white">
+        <div class="container" style="background-color: white ; margin-top:56px;">
               <div class="box" style="flex: 1 1 100%;
               overflow-x: hidden; ">
     
