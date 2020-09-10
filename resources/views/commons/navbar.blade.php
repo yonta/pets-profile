@@ -21,25 +21,23 @@ if(isset($_GET['name'])) {
 
 
 <header>
-    <nav class="navbar navbar-expand-* navbar-dark " style="background-color:#78add0;">
+    <nav class="navbar navbar-expand-* navbar-dark " style="background-color:#78add0; ">
         <div class="container" >
              {{-- トップページへのリンク --}}
             <a class="navbar-brand" href="/"><h2>PetsProfile</h2></a>
-    
-         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#nav-bar">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    
-            <div class="collapse navbar-collapse" id="nav-bar">
-          
-                <ul class="navbar-nav mr-auto">
+        
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#nav-bar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>   
+                {{--ここから展開部分--}}
+                <div class="collapse navbar-collapse p-0" id="nav-bar" style="background-color: rgba( 204, 255, 204, 0.55 ); "> 
+                <ul class="navbar-nav mr-auto container">
                 <div class = "row">
                       <div class = "col-4">
-
-                          　@if (Auth::check())
-                                <li class="nav-item dropdown ">
+                            @if (Auth::check())
+                                <li class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }}</a>
-                           
                                     <ul class="dropdown-menu dropdown-menu-right">
                                         {{-- ユーザ詳細ページへのリンク --}}
                                         <h4><li class="dropdown-item">{!! link_to_route('users.show', 'マイページ', ['user' => Auth::user()->id]) !!}</li></h4>
@@ -63,8 +61,8 @@ if(isset($_GET['name'])) {
 
                             @foreach ($classifications as $classification)
                              <h4><a href="#Species{{+$classification->id }}" data-toggle="collapse" aria-expanded="false" onclick = "{{ $clif = $classification->name }}" >{{$classification ->name }}</a></h4>
-                     
-                        　  @endforeach
+                       <br>
+                         @endforeach
                            
                      </div>
                      
@@ -85,14 +83,14 @@ $speciesa = $classification->species()->get();
                             @foreach ($speciesa as $species)
                   
                              <h4><a href="#Breeds{{+$species->id }}" data-toggle="collapse" aria-expanded="false" >{{ $species ->name }}</a></h4>
-                              
+                              <br>
                                           
-                        　  @endforeach
+                          @endforeach
 
                             </ul>
 @endforeach
-                    　</div>
-                    　
+                    </div>
+                    
                      {{-- 小分類表示カラム --}}
                       <div class = "col-3"> 
 <?php
@@ -100,9 +98,9 @@ $spe = Specie::get();
 ?>
                     @foreach ($spe as $specie)
 
-                    　   <ul class="collapse list-unstyled" id="Breeds{{+$specie->id }}">
+                       <ul class="collapse list-unstyled" id="Breeds{{+$specie->id }}">
               
-    　                   {{-- 選択した全ての中分類 --}}
+                      {{-- 選択した全ての中分類 --}}
                              <li class="nav-item"><h4>{!! link_to_route('pets.search', $specie->name, ['bunrui'=>'species', 'id' =>  $specie->id], ['class' => 'nav-link']) !!} </h4></li>
                            <hr />
                            
@@ -113,13 +111,13 @@ $bre = Breed::where('species_id', '=', $specie->id )->get();
                                @foreach ($bre as $breed)
                                  <li class="nav-item"><h4>{!! link_to_route('pets.search', $breed->name, ['bunrui'=>'breed', 'id' =>  $breed->id], ['class' => 'nav-link']) !!} </h4></li>
                                @endforeach  
-            　            </ul>
-                    @endforeach       
-                    　</div>
-                    　
-                　</div>
+                        </ul>
+                   @endforeach       
+                    </div>
+                    
+                </div>
               </ul>
-        </div>
+        
     </nav>
     
     
