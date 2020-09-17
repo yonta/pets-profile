@@ -24,7 +24,24 @@
     -`sudo cp -p /etc/fstab /etc/fstab.ORG`
     -`sudo sh -c "echo '/var/swap.1 swap swap defaults 0 0' >> /etc/fstab"`
 
-
+8. MYSQLの設定
+    -一つ上のディレクトリへ移動
+    -日本語文字化け対策`cat /etc/mysql/mysql.conf.d/mysqld.cnf | sed -e '/utf8/d' | sed -e '/sql_mode/d' | sed -e '$acharacter-set-server=utf8\nsql_mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' | sudo tee /etc/mysql/mysql.conf.d/mysqld.cnf`
+    -ユーザーの追加 `sudo mysql -u root`↓ 
+    -`GRANT ALL PRIVILEGES ON *.* TO 'dbuser'@'localhost' IDENTIFIED BY 'dbpass' WITH GRANT OPTION;`↓
+    -`exit`
+8. サーバー の再起動
+    -`sudo service mysql restart`
+8. データベースの作成
+    -ログイン `sudo mysql -u root`
+    -作成 `CREATE DATABASE `pet-profile`; `
+    -ログアウト `exit`
+8. マイグレーション
+    -Pets-profileディレクトリに戻る
+    -`php artisan migrate`
+9. Preview
+    -`php artisan serve --host=$IP --port=$PORT`
+    -「Preview」 -> 「Preview running application」
 
 ## 使ったもの  
 * AWS　Cloud9
