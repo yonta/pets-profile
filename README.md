@@ -3,7 +3,7 @@
 
 ## Getting Started  
 1. `git clone https://github.com/asyano/pets-profile.git`
-2. 不要データの削除 `docker rmi `docker images -q``
+2. 不要データの削除 ```docker rmi `docker images -q` ```
 5. php7.3のインストール
     - リポジトリの追加　`sudo apt -y install software-properties-common`
     - リポジトリを利用可能にする`sudo add-apt-repository -y ppa:ondrej/php`
@@ -17,8 +17,8 @@
 6. メモリを開放する
     -`sudo sh -c "echo 3 > /proc/sys/vm/drop_caches"`
 7. swap領域の設定
-    - `sudo dd if=/dev/zero of=/var/swap.1 bs=1M count=1024`
-    - `sudo chmod 600 /var/swap.1`
+    - ```sudo dd if=/dev/zero of=/var/swap.1 bs=1M count=1024```
+    - ```sudo chmod 600 /var/swap.1```
     - `sudo mkswap /var/swap.1`
     - `sudo swapon /var/swap.1`
     - `sudo cp -p /etc/fstab /etc/fstab.ORG`
@@ -34,7 +34,7 @@
     -`sudo service mysql restart`
 8. データベースの作成
     - ログイン `sudo mysql -u root`
-    - 作成 `CREATE DATABASE `pet-profile`; `
+    - 作成 ```CREATE DATABASE `pet-profile`; ```
     - ログアウト `exit`
 8. マイグレーション
     - Pets-profileディレクトリに戻る
