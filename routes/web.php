@@ -19,6 +19,7 @@ Session::getId();
 
  Route::get('pets/index/{bunrui}/{id}', 'PetsController@search')-> name('pets.search');
  
+ Route::post('pets/iine/{id}','PetsController@iine')-> name('pets.iine');
 Route::resource('pets', 'PetsController');
 Route::resource('breeds', 'BreedsController');
 Route::resource('photos', 'PhotosController');

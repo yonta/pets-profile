@@ -36,7 +36,13 @@
         <div class="col-sm-8">
             <div class = "row">
                 <h1>{{ $pet->name }} ちゃん</h1>
+                
+                {{-- jsテスト --}}
+                 <div class = "test" id = "target">
+                     1
+                 </div>
                 {{-- 可愛いねボタン--}}
+               
                 {!! Form::model($pet, ['route' => ['pets.update', $pet->id], 'method' => 'put']) !!}
                 {!! Form::submit('かわいい', ['class' => 'btn btn-primary']) !!} 
                 {!! Form::close() !!}  

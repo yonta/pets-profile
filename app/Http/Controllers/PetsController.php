@@ -212,4 +212,21 @@ class PetsController extends Controller
         return redirect()->route('users.show', ['user' => \Auth::user()->id]);
     }
     
+    
+    //いいねJs
+    public function iine(Request $request, $id){
+        
+        // idの値でペットを検索して取得
+        $pet = Pet::findOrFail($id);
+        
+        //可愛いね数１追加
+        $pet->cute_count = $pet->cute_count+1;
+            $pet->save();
+
+        // トップページへリダイレクトさせる
+        return response()->json([
+                'cute_count' => $pet->cute_count,
+            ], 200); //200が正常
+        
+    }
 }

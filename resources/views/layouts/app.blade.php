@@ -9,13 +9,21 @@
           .nav-item a{
                 color:white;
             }
+            
+            .test{
+                width: 100px;
+                height : 100px;
+                background-color: black;
+                cursor:pointer;
+            }
         </style>
     </head>
 
     <body  style="background-color: #f7f1d8;  margin:0; padding:0; display: flex;
           flex-direction: column;
           height: 100vh;
-          margin-top: 0;">
+          margin-top: 0;"
+>
 
         {{-- ナビゲーションバー --}}
         @include('commons.navbar')
@@ -46,7 +54,22 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
         <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>
         
-        
+        <script>
+            'use strict';  //??警告を出すやつ
+            
+            let elem = document.getElementById('target');
+            
+            //id = targret
+             elem.addEventListener('click',() => {
+                 elem.style.background = 'pink';
+                 
+                 let a = parseInt(elem.innerText);
+                 elem.innerText = a+1;
+            });
+               
+            
+        </script>
+        @csrf
     </body>
     
  
