@@ -13,7 +13,7 @@
             .test{
                 width: 100px;
                 height : 100px;
-                background-color: black;
+          
                 cursor:pointer;
             }
         </style>
@@ -58,13 +58,20 @@
             'use strict';  //??警告を出すやつ
             
             let elem = document.getElementById('target');
-            
+            let petId = elem.dataset.petId; //data-pet-id
+      
             //id = targret
              elem.addEventListener('click',() => {
                  elem.style.background = 'pink';
                  
-                 let a = parseInt(elem.innerText);
-                 elem.innerText = a+1;
+                 fetch('/pets/iine/'+ petId , {method: 'POST'}).then(
+                     function(response){
+                         console.log(response);
+                        response.json().then(function(json){
+                         elem.innerText = json.cute_count;
+                        });
+                     }
+                 );
             });
                
             

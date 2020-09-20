@@ -19,7 +19,7 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        'pets/iine/*'
+        'pets/iine/*' //csrf対策をすること
         //
     ];
 }

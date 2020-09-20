@@ -38,9 +38,14 @@
                 <h1>{{ $pet->name }} ちゃん</h1>
                 
                 {{-- jsテスト --}}
-                 <div class = "test" id = "target">
-                     1
+                 <div class = "test" id = "target" data-pet-id = "{{$pet->id }}">
+ {{$pet->cute_count}}
                  </div>
+                 
+                 
+                 
+                 
+                 
                 {{-- 可愛いねボタン--}}
                
                 {!! Form::model($pet, ['route' => ['pets.update', $pet->id], 'method' => 'put']) !!}
